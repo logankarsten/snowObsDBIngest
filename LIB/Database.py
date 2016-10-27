@@ -112,7 +112,7 @@ class Database(object):
 		"""
 		Function to return unique ID for given station_id, station_type,
 		and lat/lon pair.
-		""
+		"""
 		if not self.connected:
                         errMsg = "ERROR: Database not connected."
                         errOut(errMsg,self.errTitle,self.email,self.lockFile)
