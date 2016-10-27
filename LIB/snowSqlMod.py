@@ -74,6 +74,7 @@ def enterObs(prod,obsPD,logPD,logFile,errTitle,emailAddy,lockFile,parser):
 
 			logPD.complete[obsNum] = True
 		
+		# Update the log file to reflect a completed observation entry.		
 		writeLogData(logFile,logPD,errTitle,emailAddy,lockFile)
 
 	db.disconnect()

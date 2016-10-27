@@ -71,13 +71,12 @@ for hoursBack in range(numHoursBack,hoursPad,-1):
 		ingestSplit(dProc,'SWE',errTitle,emailAddy,logDir,obsDir,lockFile,parser)
 
 	# Snow Depth Processing
-	#newLog = logStatus(dProc,'SD',logDir)
-	#print 'SD LOG STATUS: ' + str(newLog)
+	newLog = logStatus(dProc,'SD',logDir)
 
-	#if not newLog:
-	#	ingestNew(dProc,'SD',errTitle,emailAddy,logDir,obsDir,lockFile,parser)
-	#else:
-	#	ingestSplit(dProc,'SD',errTitle,emailAddy,logDir,obsDir,lockFile,parser)
+	if not newLog:
+		ingestNew(dProc,'SD',errTitle,emailAddy,logDir,obsDir,lockFile,parser)
+	else:
+		ingestSplit(dProc,'SD',errTitle,emailAddy,logDir,obsDir,lockFile,parser)
 
 # Remove lock file
 os.remove(lockFile)

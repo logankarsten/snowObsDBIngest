@@ -10,6 +10,10 @@ from ConfigParser import SafeConfigParser
 
 class Database(object):
 	def __init__(self,parser):
+		"""
+		Initialize object declarations, including user specific parameters passed
+		placed into the config file.
+		"""
 		self.connected = False
 		self.email = parser.get('paths','emailAddy')
 		self.lockFile = parser.get('paths','tmpDir') + "/" + parser.get('paths','lockFile')
@@ -56,11 +60,13 @@ class Database(object):
 		self.connected = False
 
 	def queryMeta(self,id,type,obsLat,obsLon):
-		# Function to check the metadata table for station entry.
-		# Function will return boolean True/False back to calling
-		# program indicating if station was found.
-		# If station is found, but lat/lon differ, send error message
-		# as this indicates station has moved.
+		"""
+		Function to check the metadata table for station entry.
+		Function will return boolean True/False back to calling
+		program indicating if station was found.
+		If station is found, but lat/lon differ, send error message
+		as this indicates station has moved.
+		"""
 
 		if not self.connected:
 			errMsg = "ERROR: Not connected to database."
@@ -81,9 +87,11 @@ class Database(object):
 		return(stnStatus)
 
 	def addStn(self,id,type,obsLat,obsLon):
-		# Function to add station to the metadata table for station entry.
-		# Function uses the combination of the station_type and station_id
-		# to create a unique key value to that station. 		
+		"""
+		Function to add station to the metadata table for station entry.
+		Function uses the combination of the station_type and station_id
+		to create a unique key value to that station. 		
+		"""
 
 		if not self.connected:
 			errMsg = "ERROR: Database not connected."
@@ -101,7 +109,10 @@ class Database(object):
 			errOut(errMsg,self.errTitle,self.email,self.lockFile)
 
 	def queryUnique(self,id,type,obsLat,obsLon):
-		# Function to return unique ID for given station_id and station_type.
+		"""
+		Function to return unique ID for given station_id, station_type,
+		and lat/lon pair.
+		""
 		if not self.connected:
                         errMsg = "ERROR: Database not connected."
                         errOut(errMsg,self.errTitle,self.email,self.lockFile)
@@ -122,7 +133,9 @@ class Database(object):
 		return(uniqueID)
 
 	def enterSWE(self,uniqueID,date,obs):
-		# Function to enter in SWE observation (mm) into SWE table.
+		"""
+		Function to enter in SWE observation (mm) into SWE table.
+		"""
 		if not self.connected:
 			errMsg = "ERROR: Database not connected."
 			errOut(errMsg,self.errTitle,self.email,self.lockFile)
@@ -152,7 +165,9 @@ class Database(object):
 			errOut(errMsg,self.errTitle,self.email,self.lockFile)
 
 	def enterDepth(self,uniqueID,date,obs):
-		# Function to enter in snow depth observation (mm) into depth table.
+		"""
+		Function to enter in snow depth observation (mm) into depth table.
+		"""
 		if not self.connected:
 			errMsg = "ERROR: Database not connected."
 			errOut(errMsg,self.errTitle,self.email,self.lockFile)

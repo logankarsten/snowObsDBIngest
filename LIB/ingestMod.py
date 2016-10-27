@@ -16,8 +16,11 @@ def ingestNew(dProc,prod,errTitle,emailAddy,logDir,obsDir,lockFile,parser):
 		obsFile = obsDir + "/snowdepth_" + dProc.strftime('%Y%m%d%H') + ".txt"
 		logFile = logDir + "/LOG_SD_" + dProc.strftime('%Y%m%d%H') + ".LOG"
 
+	# Check to make sure observation file exists.
 	checkFile(obsFile,errTitle,emailAddy,lockFile)
+	# Read observation text file into Pandas data frame object.
 	obsPD = ingestObsTxt(obsFile,prod,errTitle,emailAddy,lockFile)
+	# Create new log Pandas data frame object based on observation dataset.
 	logPD = newLogData(logFile,obsPD,errTitle,emailAddy,lockFile)
 
 	# Loop through observations and enter in accordingly.
@@ -32,8 +35,11 @@ def ingestSplit(dProc,prod,errTitle,emailAddy,logDir,obsDir,lockFile,parser):
 		obsFile = obsDir + "/snowdepth_" + dProc.strftime('%Y%m%d%H') + ".txt"
 		logFile = logDir + "/LOG_SD_" + dProc.strftime('%Y%m%d%H') + ".LOG"
 
+	# Check to make sure observation file exists.
 	checkFile(obsFile,errTitle,emailAddy,lockFile)
+	# Read observation text file into Pandas data frame object.
 	obsPD = ingestObsTxt(obsFile,prod,errTitle,emailAddy,lockFile)
+	# Read in log text file containing log information for each observation.
 	logPD = ingestLogTxt(logFile,prod,errTitle,emailAddy,lockFile)
 
 	# Loop through observations and enter in accordingly.
