@@ -17,8 +17,8 @@ hoursPad = 18
 
 [sqlInfo]
 host = hydro-c1-web
-userName = logan_rw
-pass = Purdy$1986_05
+userName = logan
+pass = DHood$1948
 dbName = NWM_snow_obs
 metaTable = NWM_snow_meta
 sweTable = NWM_SWE
