@@ -103,7 +103,6 @@ class Database(object):
 		try:
 			self.conn.execute(sql)
 			self.db.commit()
-			print "ADDED STATION: " + id + " NETWORK: " + type
 		except:
 			errMsg = "ERROR: Unable to create metadata entry for ID: " + id + " NETWORK: " + type
 			errOut(errMsg,self.errTitle,self.email,self.lockFile)
@@ -142,15 +141,15 @@ class Database(object):
 
 		# First test to ensure observation has not already been instered into the table. This should
 		# be accounted for in the log file, but this is a fail safe.
-		sql = "select id from NWM_SWE where id='%s'" % (uniqueID) + \
-                      " and date_obs='%s';" % (date)
+		#sql = "select id from NWM_SWE where id='%s'" % (uniqueID) + \
+                #      " and date_obs='%s';" % (date)
 
-		self.conn.execute(sql)
-		result = self.conn.fetchone()
-		if result is not None:
-			errMsg = "ERROR: SWE Observation already entered for ID: " + str(uniqueID) + \
-                                 " DATE: " + date.strftime('%Y-%m-%d %H:%M:%S')
-			errOut(errMsg,self.errTitle,self.email,self.lockFile)
+		#self.conn.execute(sql)
+		#result = self.conn.fetchone()
+		#if result is not None:
+		#	errMsg = "ERROR: SWE Observation already entered for ID: " + str(uniqueID) + \
+                #                 " DATE: " + date.strftime('%Y-%m-%d %H:%M:%S')
+		#	errOut(errMsg,self.errTitle,self.email,self.lockFile)
 
 		# Enter data into database
 		sql = "insert into NWM_SWE (id,obs_mm,date_obs) values " + \
@@ -174,15 +173,15 @@ class Database(object):
 
 		# First test to ensure observation has not already been inserted into the table. This should
 		# be accounted for in the log file, but this is a fail safe.
-		sql = "select id from NWM_SD where id='%s'" % (uniqueID) + \
-			" and date_obs='%s';" % (date)
+		#sql = "select id from NWM_SD where id='%s'" % (uniqueID) + \
+		#	" and date_obs='%s';" % (date)
 
-		self.conn.execute(sql)
-		result = self.conn.fetchone()
-		if result is not None:
-			errMsg = "ERROR: SD Observation already entered for ID: " + str(uniqueID) + \
-				 " DATE: " + date.strftime('%Y-%m-%d %H:%M:%S')
-			errOut(errMsg,self.errTitle,self.email,self.lockFile)
+		#self.conn.execute(sql)
+		#result = self.conn.fetchone()
+		#if result is not None:
+		#	errMsg = "ERROR: SD Observation already entered for ID: " + str(uniqueID) + \
+		#		 " DATE: " + date.strftime('%Y-%m-%d %H:%M:%S')
+		#	errOut(errMsg,self.errTitle,self.email,self.lockFile)
 
 		# Enter data into database
 		sql = "insert into NWM_SD (id,obs_mm,date_obs) values " + \

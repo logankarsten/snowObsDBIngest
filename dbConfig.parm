@@ -12,13 +12,13 @@ obsDir = /d2/karsten/SNOW_DB_OBS/OBS_SNODAS/REALTIME
 lockFile = Ingest_Snow.lock
 
 [timeMgmt]
-numHoursBack = 144
-hoursPad = 18
+numHoursBack = 240
+hoursPad = 7
 
 [sqlInfo]
 host = hydro-c1-web
-userName = logan
-pass = DHood$1948
+userName = logan_rw
+pass = Purdy$1986_05
 dbName = NWM_snow_obs
 metaTable = NWM_snow_meta
 sweTable = NWM_SWE

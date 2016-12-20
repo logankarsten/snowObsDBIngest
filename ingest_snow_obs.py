@@ -60,7 +60,6 @@ createLock(lockFile,pid,warningTitle,emailAddy)
 dCurrent = datetime.datetime.now()
 for hoursBack in range(numHoursBack,hoursPad,-1):
 	dProc = dCurrent - datetime.timedelta(seconds=3600*hoursBack)
-	print dProc.strftime('%Y-%m-%d %H:%M:%S')
 
 	# SWE Processing
 	newLog = logStatus(dProc,'SWE',logDir)
