@@ -11,6 +11,9 @@ from errMod import *
 from ioMod import *
 import datetime
 
+import warnings
+warnings.filterwarnings("ignore")
+
 def enterObs(prod,obsPD,logPD,logFile,errTitle,emailAddy,lockFile,parser):
 	# Initialize DB object
 	db = Database(parser)
